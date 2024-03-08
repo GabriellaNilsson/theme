@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Projects from './Pages/projects';
+import Page4 from './Pages/page4.js';
+import Page5 from './Pages/page5.js';
+import Page3 from './Pages/page3.js';
+// import TimeReports from './Pages/TimeReports.js'; 
+import SideBar from './Components/SideBar.js';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Router>
+      <div>
+      <header>
+        <SideBar />
       </header>
-    </div>
+      <main>
+      <Routes>
+        {/* <Route path="/" element={<Projects/>} /> */}
+        <Route path="projects" element={<Projects/>} />
+        {/* <Route path="time-reports" element={<TimeReports/>} /> */}
+        <Route path="page3" element={<Page3/>} />
+        <Route path="page4" element={<Page4/>} />
+        <Route path="page5" element={<Page5/>} />
+      </Routes>
+      </main>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
